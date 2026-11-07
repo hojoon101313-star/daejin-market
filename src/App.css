@@ -1,0 +1,1428 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  color: #222222;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  color: #222222;
+}
+
+.app {
+  width: 100%;
+  max-width: 600px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: white;
+  position: relative;
+  padding-bottom: 80px;
+}
+
+/* 홈 상단 */
+
+.header {
+  padding: 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 700;
+  color: #111111;
+}
+
+.login-small-button {
+  border: 1px solid #222222;
+  border-radius: 18px;
+  padding: 7px 13px;
+  background-color: white;
+  color: #222222;
+  font-size: 12px;
+}
+
+.welcome-text {
+  font-size: 13px;
+  color: #333333;
+  font-weight: bold;
+}
+
+/* 검색 */
+
+.search-box {
+  display: flex;
+  width: 100%;
+  height: 46px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.search-box input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 0 15px;
+  font-size: 14px;
+  color: #111111;
+}
+
+.search-box input::placeholder {
+  color: #555555;
+  opacity: 1;
+}
+
+.search-box button {
+  width: 50px;
+  border: none;
+  background: transparent;
+  font-size: 18px;
+}
+
+/* 카테고리 */
+
+.categories {
+  display: flex;
+  gap: 8px;
+  padding: 15px 20px;
+  overflow-x: auto;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.categories button {
+  flex-shrink: 0;
+  padding: 9px 15px;
+  border: 1px solid #cccccc;
+  border-radius: 20px;
+  background-color: white;
+  font-size: 13px;
+  color: #333333;
+}
+
+.categories button.active {
+  background-color: #222222;
+  color: white;
+  border-color: #222222;
+}
+
+/* 메인 */
+
+.main {
+  padding: 20px;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.section-title h2 {
+  margin: 0;
+  font-size: 19px;
+  color: #111111;
+}
+
+.section-title span {
+  font-size: 13px;
+  color: #555555;
+}
+
+/* 상품 */
+
+.product-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card {
+  display: flex;
+  position: relative;
+  padding: 15px 0;
+  border-bottom: 1px solid #eeeeee;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  background-color: #fafafa;
+}
+
+.product-image {
+  width: 105px;
+  height: 105px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee;
+  border-radius: 10px;
+  font-size: 38px;
+}
+
+.product-info {
+  padding: 2px 40px 0 14px;
+}
+
+.category {
+  font-size: 11px;
+  color: #555555;
+}
+
+.product-info h3 {
+  margin: 7px 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #111111;
+}
+
+.product-info strong {
+  display: block;
+  font-size: 16px;
+  color: #111111;
+}
+
+.product-info p {
+  margin: 7px 0 0;
+  font-size: 11px;
+  color: #666666;
+}
+
+/* 하트 */
+
+.heart {
+  position: absolute;
+  right: 5px;
+  bottom: 18px;
+  border: none;
+  background: none;
+  font-size: 25px;
+  color: #333333;
+}
+
+.favorite-heart {
+  color: #e53935 !important;
+}
+
+/* 상품 없음 */
+
+.no-products {
+  text-align: center;
+  padding: 70px 20px;
+  color: #555555;
+}
+
+.no-products div {
+  font-size: 45px;
+  margin-bottom: 15px;
+}
+
+.no-products h3 {
+  margin: 0 0 8px;
+  color: #222222;
+  font-size: 17px;
+}
+
+.no-products p {
+  margin: 0;
+  font-size: 13px;
+  color: #666666;
+}
+
+/* 상품 등록 버튼 */
+
+.add-product {
+  position: fixed;
+  right: max(calc((100vw - 600px) / 2 + 20px), 20px);
+  bottom: 85px;
+  border: none;
+  border-radius: 25px;
+  padding: 13px 18px;
+  background-color: #222222;
+  color: white;
+  font-size: 13px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* 하단 메뉴 */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 600px;
+  height: 70px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  border-top: 1px solid #dddddd;
+  z-index: 10;
+}
+
+.nav-item {
+  text-align: center;
+  color: #666666;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.nav-item span {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 3px;
+}
+
+.nav-item p {
+  margin: 0;
+  color: #666666;
+}
+
+.nav-item.active {
+  color: #111111;
+  font-weight: bold;
+}
+
+.nav-item.active p {
+  color: #111111;
+}
+
+/* 공통 헤더 */
+
+.detail-header {
+  height: 65px;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-bottom: 1px solid #eeeeee;
+  position: relative;
+}
+
+.detail-header h1 {
+  margin: 0 auto;
+  font-size: 18px;
+  color: #111111;
+}
+
+.back-button {
+  position: absolute;
+  left: 15px;
+  border: none;
+  background: none;
+  font-size: 25px;
+  color: #222222;
+}
+
+/* 인증 화면 */
+
+.auth-main {
+  padding: 30px 20px 50px;
+}
+
+.auth-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.auth-title h2 {
+  margin: 0 0 10px;
+  font-size: 22px;
+  color: #111111;
+}
+
+.auth-title p {
+  margin: 0;
+  font-size: 13px;
+  color: #666666;
+}
+
+.auth-main label {
+  display: block;
+  margin: 17px 0 8px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #222222;
+}
+
+.auth-main input,
+.auth-main select {
+  width: 100%;
+  height: 46px;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  padding: 0 13px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  color: #111111;
+  background-color: white;
+}
+
+.auth-main input::placeholder {
+  color: #666666;
+}
+
+.auth-main input:focus,
+.auth-main select:focus {
+  border-color: #222222;
+}
+
+.nickname-info {
+  margin: 8px 0 0;
+  font-size: 11px;
+  color: #777777;
+  line-height: 1.5;
+}
+
+.auth-button {
+  width: 100%;
+  height: 50px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 8px;
+  background-color: #222222;
+  color: white !important;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.text-button {
+  width: 100%;
+  margin-top: 15px;
+  border: none;
+  background: none;
+  color: #555555;
+  font-size: 13px;
+}
+
+/* 상품 상세 */
+
+.detail-main {
+  padding-bottom: 100px;
+}
+
+.detail-image {
+  width: 100%;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eeeeee;
+  font-size: 100px;
+}
+
+.detail-content {
+  padding: 25px 20px;
+}
+
+.detail-content h2 {
+  margin: 10px 0;
+  font-size: 22px;
+  color: #111111;
+}
+
+.detail-price {
+  display: block;
+  font-size: 21px;
+  margin: 12px 0;
+  color: #111111;
+}
+
+.detail-location {
+  margin: 0;
+  color: #555555;
+  font-size: 13px;
+}
+
+.detail-content hr {
+  border: none;
+  border-top: 1px solid #eeeeee;
+  margin: 25px 0;
+}
+
+.detail-content h3 {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #111111;
+}
+
+.description {
+  line-height: 1.7;
+  font-size: 14px;
+  color: #444444;
+}
+
+.seller {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.seller-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+}
+
+.seller strong {
+  color: #111111;
+}
+
+.seller p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #555555;
+}
+
+/* 상세 버튼 */
+
+.detail-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 600px;
+  padding: 12px 15px;
+  display: flex;
+  gap: 8px;
+  background-color: white;
+  border-top: 1px solid #dddddd;
+  z-index: 20;
+}
+
+.detail-buttons button {
+  height: 48px;
+  border-radius: 8px;
+  font-size: 13px;
+}
+
+.favorite-button {
+  width: 25%;
+  border: 1px solid #dddddd;
+  background-color: white;
+  color: #222222;
+}
+
+.favorite-button.favorite-active {
+  color: #e53935;
+  border-color: #e53935;
+  font-weight: bold;
+}
+
+.chat-button {
+  flex: 1;
+  border: none;
+  background-color: #222222;
+  color: white !important;
+}
+
+.report-button {
+  width: 25%;
+  border: 1px solid #dddddd;
+  background-color: white;
+  color: #222222;
+}
+
+/* 상품 등록 */
+
+.register-main {
+  padding: 25px 20px 40px;
+}
+
+.photo-upload {
+  width: 110px;
+  height: 110px;
+  border: 1px dashed #cccccc;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #555555;
+  margin-bottom: 25px;
+}
+
+.photo-upload span {
+  font-size: 30px;
+}
+
+.photo-upload p {
+  margin: 5px 0 0;
+  font-size: 12px;
+  color: #555555;
+}
+
+.register-main label {
+  display: block;
+  margin: 18px 0 8px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #222222;
+}
+
+.register-main input,
+.register-main select,
+.register-main textarea {
+  width: 100%;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  padding: 13px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  color: #111111;
+  background-color: white;
+}
+
+.register-main input::placeholder,
+.register-main textarea::placeholder {
+  color: #666666;
+}
+
+.register-main input:focus,
+.register-main select:focus,
+.register-main textarea:focus {
+  border-color: #222222;
+}
+
+.register-main textarea {
+  resize: vertical;
+}
+
+.register-button {
+  width: 100%;
+  height: 50px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 8px;
+  background-color: #222222;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* 마이페이지 */
+
+.page-header {
+  padding: 24px 20px;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.page-header h1 {
+  margin: 0;
+  font-size: 22px;
+  color: #111111;
+}
+
+.mypage-main {
+  padding: 25px 20px 40px;
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: #f5f5f5;
+}
+
+.profile-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  font-size: 25px;
+}
+
+.profile-card h2 {
+  margin: 0 0 6px;
+  color: #111111;
+  font-size: 18px;
+}
+
+.profile-card p {
+  margin: 0;
+  color: #666666;
+  font-size: 12px;
+}
+
+.student-info {
+  margin-top: 25px;
+}
+
+.student-info h3 {
+  margin: 0 0 15px;
+  color: #111111;
+  font-size: 17px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #eeeeee;
+  font-size: 13px;
+}
+
+.info-row span {
+  color: #777777;
+}
+
+.info-row strong {
+  color: #222222;
+}
+
+.logout-button {
+  width: 100%;
+  height: 48px;
+  margin-top: 30px;
+  border: 1px solid #dddddd;
+  border-radius: 8px;
+  background-color: white;
+  color: #333333;
+  font-size: 14px;
+}
+
+.login-required {
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.login-required > div {
+  font-size: 50px;
+  margin-bottom: 15px;
+}
+
+.login-required h3 {
+  margin: 0 0 8px;
+  color: #222222;
+}
+
+.login-required p {
+  margin: 0;
+  color: #666666;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* 추천 전공책 */
+
+.recommended-books {
+  margin-top: 25px;
+}
+
+.recommended-books h3 {
+  margin: 0 0 15px;
+  font-size: 17px;
+  color: #111111;
+}
+
+.book-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.book-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border: 1px solid #eeeeee;
+  border-radius: 10px;
+}
+
+.book-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 8px;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.book-info strong {
+  display: block;
+  font-size: 14px;
+  color: #111111;
+}
+
+.book-info p {
+  margin: 4px 0;
+  font-size: 12px;
+  color: #666666;
+}
+
+.book-info span {
+  font-size: 13px;
+  color: #222222;
+  font-weight: bold;
+}
+
+/* 내 신고 내역 */
+
+.my-reports {
+  margin-top: 25px;
+}
+
+.my-reports h3 {
+  margin: 0 0 12px;
+  font-size: 17px;
+  color: #111111;
+}
+
+.my-reports-empty {
+  margin: 0;
+  font-size: 13px;
+  color: #999999;
+}
+
+.my-report-card {
+  padding: 12px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.my-report-card strong {
+  display: block;
+  font-size: 14px;
+  color: #111111;
+}
+
+.my-report-card p {
+  margin: 4px 0 0;
+  font-size: 12px;
+  color: #666666;
+}
+
+/* 신고 화면 */
+
+.report-main {
+  padding: 20px 20px 40px;
+}
+
+.report-main label {
+  display: block;
+  margin: 18px 0 8px;
+  font-size: 13px;
+  font-weight: bold;
+  color: #222222;
+}
+
+.report-reasons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.report-reason {
+  padding: 9px 14px;
+  border: 1px solid #cccccc;
+  border-radius: 20px;
+  background-color: white;
+  font-size: 13px;
+  color: #333333;
+}
+
+.report-reason.active {
+  background-color: #222222;
+  color: white;
+  border-color: #222222;
+}
+
+.report-main textarea {
+  width: 100%;
+  border: 1px solid #cccccc;
+  border-radius: 8px;
+  padding: 13px;
+  font-family: inherit;
+  font-size: 14px;
+  outline: none;
+  resize: vertical;
+  color: #111111;
+}
+
+.report-main textarea:focus {
+  border-color: #222222;
+}
+
+.report-submit-button {
+  width: 100%;
+  height: 50px;
+  margin-top: 25px;
+  border: none;
+  border-radius: 8px;
+  background-color: #222222;
+  color: white;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+/* 채팅 목록 */
+
+.chat-room-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-room-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 15px 0;
+  border-bottom: 1px solid #eeeeee;
+  cursor: pointer;
+}
+
+.chat-room-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #eeeeee;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.chat-room-info strong {
+  display: block;
+  font-size: 14px;
+  color: #111111;
+}
+
+.chat-room-info p {
+  margin: 4px 0;
+  font-size: 12px;
+  color: #666666;
+}
+
+.chat-room-info span {
+  font-size: 12px;
+  color: #999999;
+}
+
+/* 채팅방 */
+
+.chat-main {
+  padding: 15px 20px 90px;
+}
+
+.chat-product-info {
+  padding: 10px 12px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  font-size: 13px;
+  color: #555555;
+  margin-bottom: 12px;
+}
+
+.complete-transaction-button {
+  width: 100%;
+  height: 42px;
+  margin-bottom: 15px;
+  border: 1px solid #222222;
+  border-radius: 8px;
+  background-color: white;
+  color: #222222;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.chat-empty {
+  text-align: center;
+  color: #999999;
+  font-size: 13px;
+  margin-top: 40px;
+}
+
+.chat-messages {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.chat-bubble-row {
+  display: flex;
+}
+
+.chat-bubble-row.mine {
+  justify-content: flex-end;
+}
+
+.chat-bubble-row.theirs {
+  justify-content: flex-start;
+}
+
+.chat-bubble {
+  max-width: 70%;
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: #eeeeee;
+  color: #111111;
+}
+
+.chat-bubble-row.mine .chat-bubble {
+  background-color: #222222;
+  color: white;
+}
+
+.chat-input-bar {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 600px;
+  display: flex;
+  gap: 8px;
+  padding: 12px 15px;
+  background-color: white;
+  border-top: 1px solid #dddddd;
+}
+
+.chat-input-bar input {
+  flex: 1;
+  height: 44px;
+  border: 1px solid #cccccc;
+  border-radius: 22px;
+  padding: 0 15px;
+  font-size: 14px;
+  outline: none;
+}
+
+.chat-input-bar button {
+  height: 44px;
+  padding: 0 18px;
+  border: none;
+  border-radius: 22px;
+  background-color: #222222;
+  color: white;
+  font-size: 13px;
+}
+
+/* 거래내역 */
+
+.transaction-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.transaction-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.transaction-role {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.transaction-role.role-buy {
+  background-color: #e8f0fe;
+  color: #1a56db;
+}
+
+.transaction-role.role-sell {
+  background-color: #fdeee8;
+  color: #c2410c;
+}
+
+.transaction-info strong {
+  display: block;
+  font-size: 14px;
+  color: #111111;
+}
+
+.transaction-info p {
+  margin: 4px 0;
+  font-size: 13px;
+  color: #222222;
+  font-weight: bold;
+}
+
+.transaction-info span {
+  font-size: 12px;
+  color: #999999;
+}
+/* =========================
+   카풀 신청 / 수락 / 거절
+   ========================= */
+.carpool-request-section,
+.carpool-received-section {
+  margin-top: 24px;
+}
+
+.carpool-request-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.carpool-request-card,
+.carpool-received-card,
+.carpool-demo-control {
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+}
+
+.carpool-request-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.carpool-request-card-top > div,
+.carpool-received-card > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.carpool-request-card-top strong,
+.carpool-received-card strong {
+  color: #111;
+  font-size: 16px;
+}
+
+.carpool-request-card-top span:not(.request-status),
+.carpool-received-card span {
+  color: #777;
+  font-size: 13px;
+}
+
+.request-status {
+  flex-shrink: 0;
+  padding: 6px 9px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.status-pending {
+  background: #fff4d6;
+  color: #9a6800;
+}
+
+.status-accepted {
+  background: #e8f7ed;
+  color: #218739;
+}
+
+.status-rejected {
+  background: #f3f3f3;
+  color: #777;
+}
+
+.carpool-request-card p,
+.carpool-received-card p {
+  margin: 7px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.carpool-request-card small {
+  color: #999;
+}
+
+.carpool-accepted-message {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #f0faf3;
+  color: #218739;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.carpool-request-button.request-pending {
+  background: #f2f2f2;
+  color: #777;
+  cursor: default;
+}
+
+.carpool-request-button.request-accepted {
+  background: #e8f7ed;
+  color: #218739;
+  cursor: default;
+}
+
+.carpool-request-button.request-rejected {
+  background: #f3f3f3;
+  color: #777;
+  cursor: default;
+}
+
+.carpool-demo-control {
+  margin-top: 24px;
+  background: #fafafa;
+}
+
+.carpool-demo-control strong {
+  display: block;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.carpool-demo-control p {
+  margin: 0 0 12px;
+  color: #888;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.carpool-demo-buttons button {
+  border: 0;
+  border-radius: 10px;
+  padding: 9px 12px;
+  background: #eee;
+  color: #555;
+  cursor: pointer;
+}
+
+.carpool-received-card {
+  margin-bottom: 12px;
+}
+
+.carpool-received-buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 14px;
+}
+
+.carpool-received-buttons button {
+  flex: 1;
+  border: 0;
+  border-radius: 10px;
+  padding: 11px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.carpool-accept-button {
+  background: #e8f7ed;
+  color: #218739;
+}
+
+.carpool-reject-button {
+  background: #f2f2f2;
+  color: #666;
+}
+
+/* =========================
+   카풀 채팅
+   ========================= */
+
+.carpool-chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.carpool-chat-header h1 {
+  margin: 0;
+}
+
+.carpool-chat-header p {
+  margin: 4px 0 0;
+  color: #666;
+  font-size: 13px;
+}
+
+.back-button {
+  border: none;
+  background: transparent;
+  font-size: 28px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.carpool-chat-main {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 140px);
+}
+
+.carpool-chat-info {
+  background: #f7f7f7;
+  border-radius: 12px;
+  padding: 14px;
+  margin-bottom: 12px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  font-size: 14px;
+}
+
+.carpool-chat-info strong {
+  width: 100%;
+  font-size: 17px;
+}
+
+.carpool-chat-messages {
+  flex: 1;
+  min-height: 350px;
+  padding: 10px 0 80px;
+}
+
+.carpool-chat-system {
+  background: #f1f1f1;
+  color: #666;
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.carpool-chat-message {
+  width: fit-content;
+  max-width: 75%;
+  background: #f1f1f1;
+  border-radius: 14px;
+  padding: 9px 12px;
+  margin: 8px 0;
+}
+
+.carpool-chat-message.mine {
+  margin-left: auto;
+  background: #e8f0ff;
+}
+
+.carpool-chat-message span {
+  display: block;
+  font-size: 11px;
+  color: #777;
+  margin-bottom: 3px;
+}
+
+.carpool-chat-message p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+.carpool-chat-input-area {
+  position: fixed;
+  left: 50%;
+  bottom: 62px;
+  transform: translateX(-50%);
+  width: min(100%, 520px);
+  padding: 10px;
+  background: white;
+  border-top: 1px solid #eee;
+  display: flex;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.carpool-chat-input-area input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 11px 14px;
+  outline: none;
+}
+
+.carpool-chat-input-area button {
+  border: none;
+  border-radius: 20px;
+  padding: 0 18px;
+  background: #222;
+  color: white;
+  cursor: pointer;
+}
+
+.carpool-chat-open-button {
+  margin-top: 10px;
+  border: none;
+  border-radius: 8px;
+  padding: 9px 12px;
+  background: #222;
+  color: white;
+  cursor: pointer;
+}
+
+/* 관리자 대시보드 */
+.admin-open-button{width:100%;margin-top:22px;padding:15px;border:0;border-radius:10px;background:#202b46;color:#fff;font-size:14px;font-weight:700}
+.admin-app{max-width:900px}
+.admin-header h1{margin:12px 0 4px;font-size:24px}
+.admin-header p{margin:0;color:#777;font-size:13px}
+.admin-back-button{border:0;background:transparent;color:#555;padding:0;font-size:13px}
+.admin-main{padding:20px;display:flex;flex-direction:column;gap:18px}
+.admin-stat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.admin-stat-card{padding:17px;border:1px solid #e9eaf0;border-radius:13px;background:#fff;display:flex;flex-direction:column;gap:7px}
+.admin-stat-card span{font-size:12px;color:#777}
+.admin-stat-card strong{font-size:22px;color:#17233d;word-break:keep-all}
+.admin-stat-card small{font-size:11px;color:#999}
+.admin-panel{padding:18px;border:1px solid #e9eaf0;border-radius:13px;background:#fff}
+.admin-section-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:15px;gap:10px}
+.admin-section-title h2{margin:0;font-size:16px;color:#222}
+.admin-section-title span{font-size:11px;color:#999;white-space:nowrap}
+.admin-bar-row{display:grid;grid-template-columns:75px 1fr 28px;align-items:center;gap:9px;margin:13px 0;font-size:12px}
+.admin-bar-row>span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.admin-bar-row>strong{text-align:right}
+.admin-bar-track,.admin-month-track{height:10px;background:#f0f1f5;border-radius:99px;overflow:hidden}
+.admin-bar-fill{height:100%;background:#526b9a;border-radius:99px}
+.admin-month-chart{height:175px;display:flex;align-items:flex-end;justify-content:space-around;gap:10px;padding-top:12px}
+.admin-month-column{height:100%;flex:1;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:7px;font-size:11px;color:#777}
+.admin-month-column strong{color:#333}
+.admin-month-track{width: min(34px,80%);height:105px;display:flex;align-items:flex-end;border-radius:7px 7px 0 0}
+.admin-month-track>div{width:100%;background:#526b9a;border-radius:7px 7px 0 0;min-height:4px}
+.admin-list-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-top:1px solid #f0f0f0;font-size:12px}
+.admin-list-row>div{min-width:0;display:flex;flex-direction:column;gap:4px}
+.admin-list-row strong{font-size:13px;color:#222;overflow-wrap:anywhere}
+.admin-list-row small{font-size:11px;color:#888;overflow-wrap:anywhere}
+.admin-list-row>b{font-size:12px;white-space:nowrap}
+.admin-role-tag,.user-role-tag{font-size:10px;padding:5px 8px;border-radius:20px;white-space:nowrap}
+.admin-role-tag{background:#e9eef9;color:#304d82}
+.user-role-tag{background:#f1f1f1;color:#777}
+.admin-empty,.admin-message{font-size:12px;color:#999;padding:10px 0}
+.admin-notice{padding:15px;border-radius:10px;background:#f5f6f8;color:#666;font-size:12px;line-height:1.6}
+.admin-notice strong{display:block;margin-bottom:5px;color:#333}
+.admin-notice p{margin:4px 0}
+.admin-refresh-button,.admin-error button{border:0;border-radius:9px;background:#202b46;color:white;padding:13px;font-weight:700}
+.admin-error{padding:16px;border:1px solid #f1cccc;background:#fff8f8;border-radius:10px;font-size:13px}
+.admin-error p{margin:8px 0 12px;color:#a33;line-height:1.5}
+@media(min-width:700px){.admin-stat-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.admin-main{padding:24px}}
